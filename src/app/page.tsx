@@ -1,18 +1,8 @@
 import { getInitialProducts } from "./services";
+import { handleFormatPrice } from "./shared/hooks/helpers";
 
 export default async function () {
   const { results } = await getInitialProducts();
-
-  const handleFormatPrice = (price: number, currency: string) => {
-    if (!price) return "Sin precio";
-
-    const value = price.toLocaleString("es-AR", {
-      style: "currency",
-      currency,
-    });
-
-    return value;
-  };
 
   return (
     <>

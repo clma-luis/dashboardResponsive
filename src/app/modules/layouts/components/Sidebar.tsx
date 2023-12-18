@@ -35,7 +35,7 @@ const Sidebar = (props: SidebarProps) => {
       </aside>
       {handleBgSidebar() && (
         <div
-          className={` absolute top-0 left-0 z-20 bg-slate-500 w-screen h-screen bg-opacity-60  ${
+          className={`fixed top-0 left-0 z-20 bg-slate-500 w-screen h-screen bg-opacity-60  ${
             !openNavbar && "-translate-x-full"
           }  md:translate-x-0`}
           onClick={() => setOpenNavbar(false)}

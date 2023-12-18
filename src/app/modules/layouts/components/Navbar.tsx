@@ -1,5 +1,5 @@
 import useScreenSize from "components/app/shared/hooks/useScreenSize";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export interface NavbarProps {
   openNavbar: boolean;
@@ -7,15 +7,23 @@ export interface NavbarProps {
 }
 
 const Navbar = (props: NavbarProps) => {
-  const { openNavbar, setOpenNavbar } = props;
+  const [initialValue, setinitialValue] = useState(false)
+  const { setOpenNavbar } = props;
   const { windowWidth } = useScreenSize();
 
-  const handleBgSidebar = () => {
+  useEffect(() => {
+  if(windowWidth >= 767 && !!windowWidth){
+    setinitialValue((prev)=> !prev)
+  }
+  }, [windowWidth])
+  
 
-    return windowWidth >= 767 && !!windowWidth;
+  const handleBgSidebar = () => {
+    if (!initialValue) return true;
+
+    return windowWidth >= 767 && !!windowWidth ;
   };
 
-  console.log(handleBgSidebar())
 
 
   return (

@@ -1,5 +1,3 @@
-import Image from "next/image";
-import Navbar from "./modules/layouts/components/Navbar";
 
 export default function Home() {
   return (

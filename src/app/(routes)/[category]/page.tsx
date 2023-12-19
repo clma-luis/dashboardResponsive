@@ -1,5 +1,5 @@
 import { getInitialProducts } from "components/app/services";
-import { handleFormatPrice } from "components/app/shared/hooks/helpers";
+import { handleFormatPrice } from "components/app/shared/helpers/helpers";
 
 const Category = async ({ params: { category } }: { params: { category: string } }) => {
   const { results } = await getInitialProducts(category);

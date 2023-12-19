@@ -1,7 +1,7 @@
 "use client";
 import { Result } from "components/app/interfaces";
 import { getCategories } from "components/app/services";
-import { handleFormatPrice } from "components/app/shared/hooks/helpers";
+import { handleFormatPrice } from "components/app/shared/helpers/helpers";
 import useDashboard from "components/app/shared/hooks/useDashboard";
 import { useMemo } from "react";
 

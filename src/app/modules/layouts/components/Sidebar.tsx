@@ -1,16 +1,12 @@
 "use client";
+import useDashboard from "components/app/shared/hooks/useDashboard";
 import useScreenSize from "components/app/shared/hooks/useScreenSize";
-import React from "react";
+import ListCategories from "./ListCategories";
 
-export interface SidebarProps {
-  openNavbar: boolean;
-  setOpenNavbar: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const Sidebar = (props: SidebarProps) => {
-  const { openNavbar, setOpenNavbar } = props;
+const Sidebar = () => {
+  const { openNavbar, setOpenNavbar, categories } = useDashboard();
   const { windowWidth } = useScreenSize();
-
+  
   const handleBgSidebar = () => {
     if (!openNavbar) return false;
 
@@ -31,7 +27,9 @@ const Sidebar = (props: SidebarProps) => {
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
           </a>
         </div>
-        <h1 className="text-slate-200"> Sidebar</h1>
+        <div>
+         <ListCategories categories={categories}/>
+        </div>
       </aside>
       {handleBgSidebar() && (
         <div

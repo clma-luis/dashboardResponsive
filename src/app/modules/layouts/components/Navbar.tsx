@@ -1,3 +1,5 @@
+"use client";
+import useDashboard from "components/app/shared/hooks/useDashboard";
 import useScreenSize from "components/app/shared/hooks/useScreenSize";
 import React, { useEffect, useState } from "react";
 
@@ -6,33 +8,34 @@ export interface NavbarProps {
   setOpenNavbar: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Navbar = (props: NavbarProps) => {
-  const [initialValue, setinitialValue] = useState(false)
-  const { setOpenNavbar } = props;
+const Navbar = () => {
+  const [initialValue, setinitialValue] = useState(false);
+  const { openNavbar, setOpenNavbar } = useDashboard();
   const { windowWidth } = useScreenSize();
 
   useEffect(() => {
-  if(windowWidth >= 767 && !!windowWidth){
-    setinitialValue((prev)=> !prev)
-  }
-  }, [windowWidth])
-  
+    if (windowWidth >= 767 && !!windowWidth) {
+      setinitialValue((prev) => !prev);
+    }
+  }, [windowWidth]);
 
   const handleBgSidebar = () => {
     if (!initialValue) return true;
 
-    return windowWidth >= 767 && !!windowWidth ;
+    return windowWidth >= 767 && !!windowWidth;
   };
-
-
 
   return (
     <nav className="sticky top-0 left-0 right-0 z-10 bg-white border-gray-200 dark:bg-gray-900">
       <div className="w-full flex flex-wrap items-center justify-between  p-4 min-h-[65px]">
-        {handleBgSidebar() ? <div /> : <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-        </a>}
+        {handleBgSidebar() ? (
+          <div />
+        ) : (
+          <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+          </a>
+        )}
         <button
           data-collapse-toggle="navbar-default"
           type="button"

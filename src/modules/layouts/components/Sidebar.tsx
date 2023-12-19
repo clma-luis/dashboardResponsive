@@ -1,14 +1,10 @@
 "use client";
-import useScreenSize from "components/app/shared/hooks/useScreenSize";
 import React from "react";
+import useDashboard from "src/shared/hooks/useDashboard";
+import useScreenSize from "src/shared/hooks/useScreenSize";
 
-export interface SidebarProps {
-  openNavbar: boolean;
-  setOpenNavbar: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const Sidebar = (props: SidebarProps) => {
-  const { openNavbar, setOpenNavbar } = props;
+const Sidebar = () => {
+  const { openNavbar, setOpenNavbar } = useDashboard();
   const { windowWidth } = useScreenSize();
 
   const handleBgSidebar = () => {
@@ -27,8 +23,8 @@ const Sidebar = (props: SidebarProps) => {
       >
         <div className="s p-4 border-b-[1px] border-slate-200">
           <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+            <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Sidebar Logo" />
+            <span className="self-center text-2xl font-semibold whitespace-nowrap text-slate-200">Sidebar</span>
           </a>
         </div>
         <h1 className="text-slate-200"> Sidebar</h1>

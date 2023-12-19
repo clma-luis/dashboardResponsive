@@ -1,25 +1,25 @@
-import useScreenSize from "components/app/shared/hooks/useScreenSize";
+
 import React, { useEffect, useState } from "react";
+import useDashboard from "src/shared/hooks/useDashboard";
+import useScreenSize from "src/shared/hooks/useScreenSize";
 
-export interface NavbarProps {
-  openNavbar: boolean;
-  setOpenNavbar: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const Navbar = (props: NavbarProps) => {
-  const [initialValue, setinitialValue] = useState(false)
-  const { setOpenNavbar } = props;
+const Navbar = () => {
+  const [initialValue, setinitialValue] = useState(true)
+  const { setOpenNavbar } = useDashboard();
   const { windowWidth } = useScreenSize();
 
   useEffect(() => {
   if(windowWidth >= 767 && !!windowWidth){
     setinitialValue((prev)=> !prev)
   }
+
   }, [windowWidth])
+
+
   
 
+
   const handleBgSidebar = () => {
-    if (!initialValue) return true;
 
     return windowWidth >= 767 && !!windowWidth ;
   };
@@ -30,8 +30,8 @@ const Navbar = (props: NavbarProps) => {
     <nav className="sticky top-0 left-0 right-0 z-10 bg-white border-gray-200 dark:bg-gray-900">
       <div className="w-full flex flex-wrap items-center justify-between  p-4 min-h-[65px]">
         {handleBgSidebar() ? <div /> : <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+          <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Logo" />
+          <span className="self-center text-2xl font-semibold whitespace-nowrap text">Navbar</span>
         </a>}
         <button
           data-collapse-toggle="navbar-default"
